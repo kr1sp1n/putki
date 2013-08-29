@@ -20,6 +20,6 @@
   "readmeFilename": "README.md",
   "gitHead": "51ae9ed7fbdf9b39d017483af2c0da4edef7dd2b",
   "dependencies": {
-    "express": "~3.3.6"
+    "express": "~3.3.7"
   }
 }
