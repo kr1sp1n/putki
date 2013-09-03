@@ -20,6 +20,14 @@
   "readmeFilename": "README.md",
   "gitHead": "51ae9ed7fbdf9b39d017483af2c0da4edef7dd2b",
   "dependencies": {
-    "express": "~3.3.7"
+    "express": "~3.3.7",
+    "sqlite3": "~2.1.15",
+    "eventemitter2": "~0.4.13"
+  },
+  "devDependencies": {
+    "mocha": "~1.12.0",
+    "should": "~1.2.2",
+    "coffee-script": "~1.6.3",
+    "node-dev": "~2.0.2"
   }
 }

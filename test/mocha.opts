@@ -1,0 +1,6 @@
+--reporter spec
+--compilers coffee:coffee-script
+--ui bdd
+--colors
+--timeout 2000
+--growl
