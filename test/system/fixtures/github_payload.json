@@ -1,0 +1,99 @@
+{
+  "ref": "refs/heads/master",
+  "after": "7ebac4665f9f3d145714ac4d77ff4bf7068da329",
+  "before": "52aec9ae44786c0ba5f290da15d36131248511aa",
+  "created": false,
+  "deleted": false,
+  "forced": false,
+  "compare": "https://github.com/kr1sp1n/putzi/compare/52aec9ae4478...7ebac4665f9f",
+  "commits": [
+    {
+      "id": "7ebac4665f9f3d145714ac4d77ff4bf7068da329",
+      "distinct": true,
+      "message": "added simple tests and basic routes",
+      "timestamp": "2013-09-03T05:35:04-07:00",
+      "url": "https://github.com/kr1sp1n/putzi/commit/7ebac4665f9f3d145714ac4d77ff4bf7068da329",
+      "author": {
+        "name": "kr1sp1n",
+        "email": "krispinone@googlemail.com",
+        "username": "kr1sp1n"
+      },
+      "committer": {
+        "name": "kr1sp1n",
+        "email": "krispinone@googlemail.com",
+        "username": "kr1sp1n"
+      },
+      "added": [
+        "config/example.json",
+        "lib/putzi/index.coffee",
+        "test/mocha.opts",
+        "test/test_putzi.coffee"
+      ],
+      "removed": [],
+      "modified": [
+        ".gitignore",
+        "index.coffee",
+        "lib/server/index.coffee",
+        "package.json"
+      ]
+    }
+  ],
+  "head_commit": {
+    "id": "7ebac4665f9f3d145714ac4d77ff4bf7068da329",
+    "distinct": true,
+    "message": "added simple tests and basic routes",
+    "timestamp": "2013-09-03T05:35:04-07:00",
+    "url": "https://github.com/kr1sp1n/putzi/commit/7ebac4665f9f3d145714ac4d77ff4bf7068da329",
+    "author": {
+      "name": "kr1sp1n",
+      "email": "krispinone@googlemail.com",
+      "username": "kr1sp1n"
+    },
+    "committer": {
+      "name": "kr1sp1n",
+      "email": "krispinone@googlemail.com",
+      "username": "kr1sp1n"
+    },
+    "added": [
+      "config/example.json",
+      "lib/putzi/index.coffee",
+      "test/mocha.opts",
+      "test/test_putzi.coffee"
+    ],
+    "removed": [],
+    "modified": [
+      ".gitignore",
+      "index.coffee",
+      "lib/server/index.coffee",
+      "package.json"
+    ]
+  },
+  "repository": {
+    "id": 12434611,
+    "name": "putzi",
+    "url": "https://github.com/kr1sp1n/putzi",
+    "description": "Headless Continuous Integration Server",
+    "watchers": 0,
+    "stargazers": 0,
+    "forks": 0,
+    "fork": false,
+    "size": 412,
+    "owner": {
+      "name": "kr1sp1n",
+      "email": "krispinone@googlemail.com"
+    },
+    "private": false,
+    "open_issues": 0,
+    "has_issues": true,
+    "has_downloads": true,
+    "has_wiki": true,
+    "language": "CoffeeScript",
+    "created_at": 1377697489,
+    "pushed_at": 1378211731,
+    "master_branch": "master"
+  },
+  "pusher": {
+    "name": "kr1sp1n",
+    "email": "krispinone@googlemail.com"
+  }
+}
