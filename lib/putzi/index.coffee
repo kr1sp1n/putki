@@ -63,6 +63,7 @@ class Putzi extends EventEmitter2
 
   constructor: (@config)->
     @db = new sqlite3.Database "#{if @config?.db? then @config.db else ':memory:'}"
+    super @config
 
   ###*
    * GENERAL DATABASE FUNCTIONS
@@ -70,9 +71,12 @@ class Putzi extends EventEmitter2
   dropTable: (table_name, done)->
     @db.run "DROP TABLE IF EXISTS #{table_name}", done
 
+  noSuchTableError: (err)->
+    return Boolean(err?.message and ~err.message.indexOf 'no such table')
+
   hasTable: (table_name, done)->
-    @db.run "SELECT 1 FROM #{table_name}", (err, result)->
-      no_such_table = Boolean(err?.message and ~err.message.indexOf 'no such table')
+    @db.run "SELECT 1 FROM #{table_name}", (err, result)=>
+      no_such_table = @noSuchTableError err
       return done err, result if err and not no_such_table
       done null, not no_such_table
 
@@ -98,11 +102,13 @@ class Putzi extends EventEmitter2
         already_exists = Boolean(err?.message and ~err.message.indexOf 'column id is not unique')
         # return done new Error "Repo with id '#{data.id}' already exists" if already_exists
         return done err if err and not already_exists
-        @emit "inserted #{table_name}", data unless err
+        @emit "#{table_name}:add", data unless err
         @getById model, data.id, done
 
   getAll: (model, done)->
-    @db.all "SELECT * FROM #{model.title.toLowerCase()}", done
+    @createTable model, (err)=>
+      return done err if err?
+      @db.all "SELECT * FROM #{model.title.toLowerCase()}", done
     
   getById: (model, id, done)->
     table_name = model.title.toLowerCase()
@@ -150,5 +156,8 @@ class Putzi extends EventEmitter2
 
   createPush: (data, done)->
     @insert Push, data, done
+
+  getAllPushes: (done)->
+    @getAll Push, done
 
 module.exports = (config)-> new Putzi config

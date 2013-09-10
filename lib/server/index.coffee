@@ -1,40 +1,49 @@
-express = require 'express'
-app = express()
-app.use express.bodyParser()
+restify = require 'restify'
 request = require 'request'
 
-putzi_config = {}
+putzi_config = 
+  delimiter: ':'
+  wildcard: true
+
 putzi = (require "#{__dirname}/../putzi")(putzi_config)
 
-putzi.onAny (value)->
-  console.log "EVENT"
-  console.log @event
-  console.log value
+putzi.onAny (item)->
+  console.log "EVENT #{@event} id: #{item.id}"
 
-app.get '/', (req, res)->
-  res.send "HELLO"
+server = restify.createServer
+  name: 'putzi'
 
-app.post '/repo', (req, res)->
-  putzi.createRepo req.body, (err, repo)->
-    return res.jsonp 500, { message : err.message } if err?
-    res.jsonp repo
+server.use restify.jsonp()
+server.use restify.queryParser()
+server.use restify.bodyParser()
 
-app.get '/repo', (req, res)->
+
+
+
+
+###*
+ * ROUTES
+###
+
+# GET all repos
+server.get '/repo', (req, res, next)->
   putzi.getAllRepos (err, repos)->
-    console.log err if err
-    return res.jsonp 500, err if err
-    res.jsonp repos
+    return next err if err?
+    res.send repos
 
-app.post '/job', (req, res)->
-  res.send ""
+# GET all github pushes
+server.get '/push', (req, res, next)->
+  putzi.getAllPushes (err, pushes)->
+    return next err if err?
+    res.send pushes
 
-app.post '/github', (req, res)->
-
-  putzi.createPush req.body.payload, (err)->
-    return res.jsonp 500, err if err
-    
-    # set status
-    commit_id = req.body.payload.after
+# POST-RECEIVE HOOK
+server.post '/github', (req, res, next)->
+  payload = JSON.parse req.params.payload
+  putzi.receivePush payload, (err, push)->
+    return next err if err?
+    # set status on github
+    commit_id = payload.after
     request.post
       url: "https://api.github.com/repos/kr1sp1n/putzi/statuses/#{commit_id}"
       auth:
@@ -43,13 +52,14 @@ app.post '/github', (req, res)->
       json:
         state: "pending"
     ,(err, req, github_res)->
-      return res.jsonp 500, err if err
-      res.jsonp github_res
-  
+      return next err if err?
+      res.send github_res
+
 
 
 
 unless module.parent?
-  app.listen 3000
+  server.listen 8080, ->
+    console.log "#{server.name} listening at #{server.url}"
 
-module.exports = app
+module.exports = server
