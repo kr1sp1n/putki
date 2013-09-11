@@ -82,7 +82,7 @@ class Putzi extends EventEmitter2
 
   createTable: (model, done)->
     columns = for name, property of model.properties
-      "#{name} #{json2sqlite[property.type]}"
+      "#{name} #{json2sqlite[property.type]}" + (if name=='id' then " PRIMARY KEY")
     @db.run "CREATE TABLE IF NOT EXISTS #{model.title.toLowerCase()} (#{columns.join ', '})", done
 
   insert: (model, data, done)->
@@ -159,5 +159,8 @@ class Putzi extends EventEmitter2
 
   getAllPushes: (done)->
     @getAll Push, done
+
+  getPushById: (id, done)->
+    @getById Push, id, done
 
 module.exports = (config)-> new Putzi config

@@ -68,6 +68,19 @@ describe 'putzi', ->
         return done err if err?
         putzi.dropTable 'push', done
 
+    it 'should save a new push', (done)->
+      putzi.receivePush @push_data, (err, push)->
+        return done err if err?
+        putzi.getPushById push.id, (err, saved_push)->
+          return done err if err?
+          saved_push.should.have.property 'id'
+          saved_push.should.have.property 'payload'
+          saved_push.should.have.property 'received_at'
+          saved_push.should.have.property 'repo_id'
+          saved_push.should.eql push
+          done null
+
+
     it 'should create a new repo if it not exists', (done)->
       putzi.hasRepo @push_data.repository.id, (err, has_repo, repo)=>
         return done err if err?

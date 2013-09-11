@@ -12,12 +12,12 @@ postPush = (done)->
     json: true
   , done
 
-describe 'server', ->
-  @timeout 10000
+describe 'putzi server', ->
+  @timeout 5000
   before ->
     server.listen port
-  describe 'post-receive hook', ->
-    it 'should parse a POST request from github', (done)->
+  describe 'POST /github', ->
+    it "should set the state of the after commit to 'pending'", (done)->
       postPush (err, req, res)->
         res.should.have.property 'state', 'pending'
         done()
