@@ -1,4 +1,4 @@
-server = require "#{__dirname}/lib/server"
+server = (require "#{__dirname}/lib/server")()
 port = 3000
 
 server.listen port, ->
