@@ -1,6 +1,6 @@
 {
   "name": "dullahan",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Headless Continuous Integration Server",
   "main": "index.coffee",
   "scripts": {

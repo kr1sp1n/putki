@@ -1,23 +1,5 @@
 EventEmitter2 = require('eventemitter2').EventEmitter2
 
-moment = require 'moment'
-uuid = require 'node-uuid'
-fs = require 'fs'
-path = require 'path'
-
-createDirsIfNotExists = (file_path, dirs=[])->
-  return false unless file_path?
-  file_path = path.normalize file_path
-  unless fs.existsSync file_path
-    dirs.push file_path.split(path.sep).pop()
-    createDirsIfNotExists (path.dirname file_path), dirs
-  else
-    dirs.reverse().pop()
-    d = file_path
-    for dir in dirs
-      d += path.sep + dir
-      fs.mkdirSync d
-
 class Dullahan extends EventEmitter2
 
   constructor: (@config)->
@@ -42,6 +24,9 @@ class Dullahan extends EventEmitter2
   getById: (model, id, done)->
     model.findOne {"_id" : id}, done
 
+  getAll: (model, done)->
+    model.find {}, {_id: 0, __v: 0}, done
+
   ###*
    * REPOSITORY
   ###
@@ -60,7 +45,7 @@ class Dullahan extends EventEmitter2
         @Repository.create data, done
 
   getAllRepositories: (done)->
-    @Repository.find {}, {_id: 0, __v: 0}, done
+    @getAll @Repository, done
 
   getRepositoryById: (id, done)->
     @getById @Repository, id, done
@@ -151,7 +136,7 @@ class Dullahan extends EventEmitter2
     , (err, repository)=>
       return done err if err?
       data =
-        payload : JSON.stringify payload  # save payload received from github
+        payload : payload  # save payload received from github
         repository: repository._id # link with repo
       @createPush data, (err, push)=>
         return done err if err?
@@ -160,8 +145,8 @@ class Dullahan extends EventEmitter2
           return done err if err?
           done null, push
 
-  # getAllPushes: (done)->
-  #   @getAll Push, done
+  getAllPushes: (done)->
+    @getAll @Push, done
 
   getPushById: (id, done)->
     @getById @Push, id, done

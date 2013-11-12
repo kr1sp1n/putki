@@ -18,7 +18,7 @@ module.exports = (config)->
 
   PushSchema = new Schema
     repository : { type: Schema.Types.ObjectId, ref: 'Repository', required: true}
-    payload     : String
+    payload     : {}
     received_at :
       type: Date
       default: moment.utc().toDate()

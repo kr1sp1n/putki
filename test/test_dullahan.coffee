@@ -59,7 +59,7 @@ describe 'dullahan', ->
         dullahan.getPushById push.id, (err, saved_push)->
           return done err if err?
           saved_push.should.have.property 'id', push.id
-          saved_push.should.have.property 'payload', push.payload
+          saved_push.should.have.property 'payload'
           saved_push.should.have.property 'received_at'
           push.received_at.should.eql saved_push.received_at
           saved_push.should.have.property 'repository'
@@ -76,5 +76,22 @@ describe 'dullahan', ->
             return done err if err?
             repo.github_id.should.equal String(@push_data.repository.id)
             done null
+
+  describe 'getAllPushes(done)', ->
+
+    beforeEach (done)->
+      @push_data = github_payload
+      dullahan.destroyAllPushes (err)->
+        done err
+
+    it 'should return all pushes in the db', (done)->
+      dullahan.receivePush @push_data, (err, push)=>
+        return done err if err?
+        dullahan.receivePush @push_data, (err, push)=>
+          return done err if err?
+          dullahan.getAllPushes (err, pushes)=>
+            return done err if err?
+            pushes.length.should.equal 2
+            done()
 
 
