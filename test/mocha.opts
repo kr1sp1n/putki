@@ -3,5 +3,4 @@
 --ui bdd
 --colors
 --growl
---recursive
 --timeout 20000
