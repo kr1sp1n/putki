@@ -1,5 +1,5 @@
 --reporter spec
---compilers coffee:coffee-script
+--compilers coffee:coffee-script/register
 --ui bdd
 --colors
 --growl

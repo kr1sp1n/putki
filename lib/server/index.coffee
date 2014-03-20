@@ -39,11 +39,14 @@ init = (config)->
 
   # POST-RECEIVE HOOK
   server.post '/github', (req, res, next)->
+    console.log req.params
+    
     payload = if typeof req.params.payload == 'object' then req.params.payload else JSON.parse req.params.payload
     putki.receivePush payload, (err, push)->
       return next err if err?
       # set status on github
       commit_id = payload.after
+
       request.post
         url: "https://api.github.com/repos/kr1sp1n/putki/statuses/#{commit_id}"
         auth:
