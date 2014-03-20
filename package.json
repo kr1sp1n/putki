@@ -32,7 +32,6 @@
   "devDependencies": {
     "mocha": "~1.18.2",
     "should": "~3.1.4",
-    "coffee-script": "~1.6.3",
     "node-dev": "~2.1.6",
     "nock": "~0.22.1"
   },
