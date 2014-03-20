@@ -5,14 +5,14 @@
   "created": false,
   "deleted": false,
   "forced": false,
-  "compare": "https://github.com/kr1sp1n/dullahan/compare/52aec9ae4478...7ebac4665f9f",
+  "compare": "https://github.com/kr1sp1n/putki/compare/52aec9ae4478...7ebac4665f9f",
   "commits": [
     {
       "id": "7ebac4665f9f3d145714ac4d77ff4bf7068da329",
       "distinct": true,
       "message": "added simple tests and basic routes",
       "timestamp": "2013-09-03T05:35:04-07:00",
-      "url": "https://github.com/kr1sp1n/dullahan/commit/7ebac4665f9f3d145714ac4d77ff4bf7068da329",
+      "url": "https://github.com/kr1sp1n/putki/commit/7ebac4665f9f3d145714ac4d77ff4bf7068da329",
       "author": {
         "name": "kr1sp1n",
         "email": "krispinone@googlemail.com",
@@ -25,9 +25,9 @@
       },
       "added": [
         "config/example.json",
-        "lib/dullahan/index.coffee",
+        "lib/putki/index.coffee",
         "test/mocha.opts",
-        "test/test_dullahan.coffee"
+        "test/test_putki.coffee"
       ],
       "removed": [],
       "modified": [
@@ -43,7 +43,7 @@
     "distinct": true,
     "message": "added simple tests and basic routes",
     "timestamp": "2013-09-03T05:35:04-07:00",
-    "url": "https://github.com/kr1sp1n/dullahan/commit/7ebac4665f9f3d145714ac4d77ff4bf7068da329",
+    "url": "https://github.com/kr1sp1n/putki/commit/7ebac4665f9f3d145714ac4d77ff4bf7068da329",
     "author": {
       "name": "kr1sp1n",
       "email": "krispinone@googlemail.com",
@@ -56,9 +56,9 @@
     },
     "added": [
       "config/example.json",
-      "lib/dullahan/index.coffee",
+      "lib/putki/index.coffee",
       "test/mocha.opts",
-      "test/test_dullahan.coffee"
+      "test/test_putki.coffee"
     ],
     "removed": [],
     "modified": [
@@ -70,8 +70,8 @@
   },
   "repository": {
     "id": 12434611,
-    "name": "dullahan",
-    "url": "https://github.com/kr1sp1n/dullahan",
+    "name": "putki",
+    "url": "https://github.com/kr1sp1n/putki",
     "description": "Headless Continuous Integration Server",
     "watchers": 0,
     "stargazers": 0,

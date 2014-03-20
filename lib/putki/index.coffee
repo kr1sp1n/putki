@@ -1,6 +1,6 @@
 EventEmitter2 = require('eventemitter2').EventEmitter2
 
-class Dullahan extends EventEmitter2
+class Putki extends EventEmitter2
 
   constructor: (@config)->
     @db = (require "#{__dirname}/db")(@config?.db)
@@ -152,4 +152,4 @@ class Dullahan extends EventEmitter2
     @getById @Push, id, done
 
 module.exports = (config)->
-  new Dullahan config
+  new Putki config

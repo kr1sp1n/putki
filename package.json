@@ -1,5 +1,5 @@
 {
-  "name": "dullahan",
+  "name": "putki",
   "version": "0.0.2",
   "description": "Headless Continuous Integration Server",
   "main": "index.coffee",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/kr1sp1n/dullahan.git"
+    "url": "https://github.com/kr1sp1n/putki.git"
   },
   "keywords": [
     "ci",

@@ -7,7 +7,7 @@ db_file = "#{__dirname}/../../db/test.sqlite"
 # config =
 #   db : db_file
 config = {}
-dullahan = (require "#{__dirname}/../../lib/dullahan")()
+putki = (require "#{__dirname}/../../lib/putki")()
 
 server = (require "#{__dirname}/../../lib/server")(config)
 
@@ -19,7 +19,7 @@ github_response = require "#{__dirname}/fixtures/github_response"
 # stub github
 github = nock('https://api.github.com')
           .persist()
-          .post("/repos/kr1sp1n/dullahan/statuses/#{github_payload.after}", {state: 'pending'})
+          .post("/repos/kr1sp1n/putki/statuses/#{github_payload.after}", {state: 'pending'})
           .reply(200, github_response)
 
 endpoint = "http://localhost:#{port}"
@@ -50,11 +50,11 @@ describe 'server', ->
   #   before (done)->
   #     @data1 = {id:'1', name:'Repo1', url: 'https://github.com/kr1sp1n/repo1'}
   #     @data2 = {id:'2', name:'Repo2', url: 'https://github.com/kr1sp1n/repo2'}
-  #     dullahan.deleteAllRepos (err)=>
+  #     putki.deleteAllRepos (err)=>
   #       return done err if err?
-  #       dullahan.createRepo @data1, (err, repo1)=>
+  #       putki.createRepo @data1, (err, repo1)=>
   #         return done err if err?
-  #         dullahan.createRepo @data2, (err, repo2)=>
+  #         putki.createRepo @data2, (err, repo2)=>
   #           done err
 
   #   it 'should get all saved repos', (done)->
