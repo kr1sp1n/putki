@@ -3,12 +3,10 @@ should = require 'should'
 nock = require 'nock'
 fs = require 'fs'
 
-db_file = "#{__dirname}/../../db/test.sqlite"
-# config =
-#   db : db_file
-config = {}
-putki = (require "#{__dirname}/../../lib/putki")()
+config =
+  db: 'mongodb://localhost/putki_test'
 
+putki = (require "#{__dirname}/../../lib/putki")(config)
 server = (require "#{__dirname}/../../lib/server")(config)
 
 port = 3099
@@ -35,16 +33,16 @@ postPush = (done)->
 getAllRepos = (done)->request.get {url: "#{endpoint}/repo", json: true}, done
 
 describe 'server', ->
-  @timeout 2000
+
   before (done)->
     server.listen port, done
 
-  # describe 'POST /github', ->
-  #   it "should set the state of the after commit to 'pending'", (done)->
-  #     postPush (err, res, body)->
-  #       return done err if err?
-  #       body.should.have.property 'state', 'pending'
-  #       done null
+  describe 'POST /github', ->
+    it "should set the state of the after commit to 'pending'", (done)->
+      postPush (err, res, body)->
+        return done err if err?
+        body.should.have.property 'state', 'pending'
+        done null
 
   # describe 'GET /repo', ->
   #   before (done)->

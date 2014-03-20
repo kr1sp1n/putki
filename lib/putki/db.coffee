@@ -1,7 +1,7 @@
 mongoose = require 'mongoose'
 moment = require 'moment'
 
-module.exports = (config)->
+module.exports = (uri)->
   db = new mongoose.Mongoose()
   Schema = db.Schema
 
@@ -37,6 +37,7 @@ module.exports = (config)->
 
   Step = db.model 'Step', StepSchema
 
-  db.connect config, 'putki_test'
+  db.connect uri, (err, res)->
+    console.log err if err
 
   return db

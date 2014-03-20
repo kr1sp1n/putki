@@ -1,6 +1,8 @@
 should = require "should"
 
-config = {}
+config = 
+  db: 'mongodb://localhost/putki_test'
+  
 putki = (require "#{__dirname}/../lib/putki")(config)
 
 github_payload = require "#{__dirname}/system/fixtures/github_payload"

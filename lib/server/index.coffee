@@ -39,8 +39,6 @@ init = (config)->
 
   # POST-RECEIVE HOOK
   server.post '/github', (req, res, next)->
-    console.log req.params
-    
     payload = if typeof req.params.payload == 'object' then req.params.payload else JSON.parse req.params.payload
     putki.receivePush payload, (err, push)->
       return next err if err?
