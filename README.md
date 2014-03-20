@@ -1,8 +1,8 @@
-Dullahan
+putki
 ========
 Headless Continuous Integration Server
 
-[![Build Status](https://travis-ci.org/kr1sp1n/dullahan.png)](https://travis-ci.org/kr1sp1n/dullahan)
+[![Build Status](https://travis-ci.org/kr1sp1n/putki.png)](https://travis-ci.org/kr1sp1n/putki)
 
 ## Why?
 Our goal is to develop a rock-solid CI server that is fun to work with and easy to configure.
