@@ -44,9 +44,13 @@ init = (config)->
       return next err if err?
       # set status on github
       commit_id = payload.after
+      owner = payload.repository.owner.name
+      repo_name = payload.repository.name
 
       request.post
-        url: "https://api.github.com/repos/kr1sp1n/putki/statuses/#{commit_id}"
+        url: "https://api.github.com/repos/#{owner}/#{repo_name}/statuses/#{commit_id}"
+        headers:
+          'User-Agent': 'putki-ci-server'
         auth:
           user: 'kr1sp1n'
           pass: 'githubBox23'
