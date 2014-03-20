@@ -37,6 +37,6 @@ module.exports = (config)->
 
   Step = db.model 'Step', StepSchema
 
-  db.connect 'localhost', 'putki_test'
+  db.connect config, 'putki_test'
 
   return db

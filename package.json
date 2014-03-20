@@ -33,7 +33,7 @@
     "mocha": "~1.12.0",
     "should": "~1.2.2",
     "coffee-script": "~1.6.3",
-    "node-dev": "~2.0.2",
+    "node-dev": "~2.1.6",
     "nock": "~0.22.1"
   },
   "engines": {
