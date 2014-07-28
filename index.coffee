@@ -1,5 +1,5 @@
 config =
-  db: process.env.MONGOHQ_URL || 'mongodb://localhost/putki'
+  db: process.env.MONGOHQ_URL || 'memory'
 
 server = (require "#{__dirname}/lib/server")(config)
 port = Number(process.env.PORT || 3000);

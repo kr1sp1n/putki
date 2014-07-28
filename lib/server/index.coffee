@@ -53,7 +53,7 @@ init = (config)->
           'User-Agent': 'putki-ci-server'
         auth:
           user: 'kr1sp1n'
-          pass: 'githubBox23'
+          pass: 'yourpassword'
         json:
           state: "pending"
       ,(err, req, github_res)->

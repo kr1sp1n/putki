@@ -2,10 +2,11 @@ EventEmitter2 = require('eventemitter2').EventEmitter2
 
 class Putki extends EventEmitter2
 
-  constructor: (@config)->
-    @db = (require "#{__dirname}/db")(@config?.db)
+  constructor: (@config={db:'memory'})->
+    @db = (require "#{__dirname}/db")(@config.db)
     # Destructuring assignment as short cuts to models
-    {@Repository, @Push, @Job, @Step} = @db.models
+    {@Pipe} = @db.models
+
     # pass Eventemitter2 config
     super @config
 
@@ -13,6 +14,12 @@ class Putki extends EventEmitter2
    * GENERAL
   ###
 
+  addPipe: (data, done)->
+    @Pipe.create data, done
+
+  getPipe: (id, done)->
+    @Pipe.find id, done
+    
   dropCollection: (model, done)->
     model.count (err, count)->
       return done err if err?
