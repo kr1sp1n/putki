@@ -16,3 +16,12 @@ npm-debug.log
 node_modules/
 db/
 .DS_Store
+
+settings
+**/settings
+cache
+**/cache
+
+**/spotify_user.json
+
+**/*.key
